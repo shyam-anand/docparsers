@@ -5,7 +5,13 @@ description = "Document parsers for NewSpring Capital."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "pandas>=2.3.3",
+    "pandas[excel]>=2.3.3",
+    "pandas-stubs>=2.3.3.251219",
+    "pytest>=9.0.2",
+    "click>=8.3.1",
+    "pdfplumber>=0.11.9",
+    "pydantic>=2.12.5",
+    "dotenv>=0.9.9",
 ]
 
 [build-system]
@@ -19,4 +25,6 @@ package = true
 packages = ["src/docparsers"]
 
 [project.scripts]
+cli = "docparsers.cli:cli"
 excel = "docparsers.excelparser.main:main"
+pdf = "docparsers.pdfparser.main:main"

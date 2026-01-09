@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from docextractors.core.models.document_unit import DocumentUnit
+from extractors.core.models.document_unit import DocumentUnit
 
 
 class BaseExtractor(ABC):

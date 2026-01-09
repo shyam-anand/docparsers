@@ -1,6 +1,3 @@
-from pdfplumber.table import Table
-
-import inspect
 import logging
 import pathlib
 import re
@@ -12,7 +9,7 @@ from pdfplumber.page import Page
 from pdfplumber.table import Table
 from pydantic import BaseModel
 
-from docextractors import config
+from extractors import config
 
 logger = logging.getLogger(__name__)
 

@@ -1,8 +1,8 @@
 import click
 
-from docparsers import loggingconfig
-from docparsers.excelparser import main as excelparser
-from docparsers.pdfparser import main as pdfparser
+from extractors import loggingconfig
+from extractors.excelextractor import main as excelparser
+from extractors.pdfextractor import main as pdfparser
 
 logger = loggingconfig.get_logger(__name__)
 

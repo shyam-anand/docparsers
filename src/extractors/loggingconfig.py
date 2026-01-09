@@ -20,21 +20,10 @@ The verbosity level can be controlled using command line arguments:
 """
 
 import logging
-from argparse import ArgumentParser
 from typing import Optional
 
 from . import config
 
-# Create a parser instance that can be used by other modules
-# We use add_help=False to avoid conflicts with the main application's argument parser
-parser = ArgumentParser(add_help=False)
-parser.add_argument(
-    "-v",
-    "--verbose",
-    action="count",
-    default=0,
-    help="Increase verbosity (use -v for INFO, -vv for DEBUG)",
-)
 
 LOG_FORMAT = "%(asctime)s %(levelname)s %(module)s::%(funcName)s:%(lineno)d - %(message)s"
 
@@ -113,9 +102,6 @@ def get_logger(name: Optional[str] = None) -> logging.Logger:
     return logging.getLogger(name)
 
 
-# Configure logging automatically when this module is imported
-args, _ = parser.parse_known_args()
-
 # Create a formatter with a detailed format string that includes:
 # - Timestamp
 # - Log level
@@ -133,7 +119,6 @@ handler.setFormatter(formatter)
 # Configure the root logger
 # This configuration will be inherited by all loggers in the application
 root_logger = logging.getLogger()
-root_logger.setLevel(_get_log_level(args.verbose))
 root_logger.addHandler(handler)
 
 # Prevent propagation to avoid duplicate logs

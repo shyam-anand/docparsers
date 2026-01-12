@@ -1,28 +1,17 @@
 from typing import List, Dict, Any
+from pydantic import BaseModel
 
 
-class DocumentUnit:
-    def __init__(
-        self,
-        document_id: str,
-        unit_type: str,
-        unit_index: int,
-        unit_name: str | None,
-        raw_text: str,
-        tables: List[Dict[str, Any]],
-        layout: Dict[str, Any],
-        parser_name: str,
-        parser_version: str,
-    ):
-        self.document_id = document_id
-        self.unit_type = unit_type
-        self.unit_index = unit_index
-        self.unit_name = unit_name
-        self.raw_text = raw_text
-        self.tables = tables
-        self.layout = layout
-        self.parser_name = parser_name
-        self.parser_version = parser_version
+class DocumentUnit(BaseModel):
+    document_id: str
+    unit_type: str
+    unit_index: int
+    unit_name: str | None
+    raw_text: str
+    tables: List[Dict[str, Any]]
+    layout: Dict[str, Any]
+    parser_name: str
+    parser_version: str
 
     def to_dict(self) -> Dict[str, Any]:
         return {

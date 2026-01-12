@@ -44,10 +44,16 @@ class PdfParser:
             if cells:
                 yield cells
 
-    def extract_text_from_pdf(self, pdf_page: Page, remove_non_latin: bool = True) -> Iterable[str]:
+    def extract_text_from_pdf(
+        self, pdf_page: Page, remove_non_latin: bool = True
+    ) -> Iterable[str]:
         try:
             extracted_text = pdf_page.extract_text()
-            text = NON_LATIN_RE.sub("", extracted_text) if remove_non_latin else extracted_text
+            text = (
+                NON_LATIN_RE.sub("", extracted_text)
+                if remove_non_latin
+                else extracted_text
+            )
 
             yield text
 
@@ -55,7 +61,9 @@ class PdfParser:
             logger.error(f"Error extracting text from {pdf_page}: {e}")
 
     def _open_pdf_file(self, file_path: pathlib.Path) -> PDF:
-        file_path = config.APP_ROOT / file_path if not file_path.is_absolute() else file_path
+        file_path = (
+            config.APP_ROOT / file_path if not file_path.is_absolute() else file_path
+        )
         if not file_path.exists():
             raise FileNotFoundError(f"File {file_path} not found")
         if not file_path.suffix == ".pdf":

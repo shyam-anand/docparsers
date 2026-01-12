@@ -25,7 +25,9 @@ from typing import Optional
 from . import config
 
 
-LOG_FORMAT = "%(asctime)s %(levelname)s %(module)s::%(funcName)s:%(lineno)d - %(message)s"
+LOG_FORMAT = (
+    "%(asctime)s %(levelname)s %(module)s::%(funcName)s:%(lineno)d - %(message)s"
+)
 
 
 class CustomFormatter(logging.Formatter):
@@ -132,6 +134,7 @@ root_logger.debug("Verbosity level set to %s", logging.getLevelName(root_logger.
 # Log levels for individual modules
 logging.getLogger("pdfminer").setLevel(logging.WARNING)
 logging.getLogger("pdfplumber").setLevel(logging.WARNING)
+logging.getLogger("pyspark").setLevel(logging.WARNING)
 logging.getLogger("python_multipart").setLevel(logging.WARNING)
 
 

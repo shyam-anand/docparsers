@@ -1,6 +1,6 @@
 from extractors.core.extractor.base_extractor import BaseExtractor
-from extractors.pdfextractor.pdf_extractor import PdfExtractor
-from extractors.excelextractor.excel_extractor import ExcelExtractor
+from extractors.pdf.pdf_extractor import PdfExtractor
+from extractors.excel.excel_extractor import ExcelExtractor
 
 
 def get_extractor(file_extension: str) -> BaseExtractor:

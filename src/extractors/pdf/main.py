@@ -1,5 +1,5 @@
 import click
-from extractors.pdfextractor import pdfparser
+from extractors.pdf import pdf_parser as pdfparser
 from pathlib import Path
 
 
